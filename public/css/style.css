@@ -1,0 +1,8 @@
+body {
+    background: #909090;
+    min-width: 800px;
+}
+
+.input-group-addon {
+    min-width: 40px;
+}

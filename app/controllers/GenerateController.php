@@ -3,7 +3,7 @@
 /**
  * Controller for the generate page.
  */
-class GenerateController extends Controller
+class GenerateController extends BaseController
 {
 
     /**
@@ -24,6 +24,9 @@ class GenerateController extends Controller
      */
     public function showStartPage()
     {
+        if (Session::has('rsa') || Session::has('bm')) {
+            return Redirect::to('results');
+        }
         return Redirect::to('generate');
     }
 
@@ -36,7 +39,7 @@ class GenerateController extends Controller
      */
     public function isPrime($number)
     {
-        $isPrime = !(gmp_prob_prime($number) === 0);
+        $isPrime = !gmp_cmp(gmp_prob_prime($number), 0) == 0;
         return Response::json(array('isPrime' => $isPrime));
     }
 
@@ -51,7 +54,7 @@ class GenerateController extends Controller
      */
     public function areCoprime($number, $number1, $number2)
     {
-        $areCoprime = gmp_strval(gmp_gcd($number, gmp_mul(($number1 - 1), ($number2 - 1)))) === '1';
+        $areCoprime = gmp_cmp(gmp_gcd($number, gmp_mul(gmp_sub($number1, 1), gmp_sub($number2, 1))), 1) == 0;
         return Response::json(array('areCoprime' => $areCoprime));
     }
 
@@ -62,20 +65,21 @@ class GenerateController extends Controller
      */
     public function generate()
     {
-        print_r(Input::except('_token'));
-        /*
-         * blum-micali_cb
-         * rsa_cb
-         * first_num_bm
-         * second_num_bm
-         * seed_bm
-         * max_number_bm
-         * count_bm
-         * first_num_rsa
-         * second_num_rsa
-         * coprime_num_rsa
-         * seed_rsa
-         * count_rsa
-         */
+        $isSet = false;
+        if (Input::get('blum-micali_cb') === 'blum-micali') {
+            $isSet = true;
+            App::make('BlumMicaliController')->generate(Input::get('first_num_bm'), Input::get('second_num_bm'),
+                Input::get('seed_bm'), Input::get('max_number_bm'), Input::get('count_bm'));
+        }
+        if (Input::get('rsa_cb') === 'rsa') {
+            $isSet = true;
+            App::make('RsaController')->generate(Input::get('first_num_rsa'), Input::get('second_num_rsa'),
+                Input::get('coprime_num_rsa'), Input::get('seed_rsa'), Input::get('max_number_rsa'),
+                Input::get('count_rsa'));
+        }
+        if (!$isSet) {
+            App::abort(500);
+        }
+        return Redirect::to('results');
     }
 }

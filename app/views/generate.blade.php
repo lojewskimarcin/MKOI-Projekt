@@ -43,13 +43,13 @@
       </div>
       <div class="form-group">
         <div class="input-group">
-          <div class="input-group-addon">N</div>
+          <div class="input-group-addon">n</div>
           <input id="max_number_bm" name="max_number_bm" type="text" class="form-control" placeholder="@lang('generate.max_number')">
         </div>
       </div>
       <div class="form-group">
         <div class="input-group">
-          <div class="input-group-addon">n</div>
+          <div class="input-group-addon">N</div>
           <input id="count_bm" name="count_bm" type="text" class="form-control" placeholder="@lang('generate.count')">
         </div>
       </div>
@@ -85,6 +85,12 @@
       <div class="form-group">
         <div class="input-group">
           <div class="input-group-addon">n</div>
+          <input id="max_number_rsa" name="max_number_rsa" type="text" class="form-control" placeholder="@lang('generate.max_number')">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">N</div>
           <input id="count_rsa" name="count_rsa" type="text" class="form-control" placeholder="@lang('generate.count')">
         </div>
       </div>

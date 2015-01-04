@@ -109,6 +109,12 @@ function validate(button) {
             srsa.parent().addClass('has-error has-feedback');
             error = true;
         }
+        var mnrsa = $('#max_number_rsa');
+        if (!isNaturalNumber(mnrsa.val())) {
+            mnrsa.after(errorMessage);
+            mnrsa.parent().addClass('has-error has-feedback');
+            error = true;
+        }
         var crsa = $('#count_rsa');
         if (!isNaturalNumber(crsa.val())) {
             crsa.after(errorMessage);

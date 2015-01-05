@@ -22,7 +22,8 @@ class BlumMicaliController extends BaseController
         }
         $tmp = array();
         $results = array();
-        for ($i = 1; $i <= gmp_strval(gmp_mul($count, $mn)); $i++) {
+        $loop = gmp_strval(gmp_mul($count, $mn));
+        for ($i = 1; $i <= $loop; $i++) {
             $seed = $this->nextNumber($fn, $sn, $seed);
             $tmp[] = $seed;
             if ($i % $mn === 0) {
@@ -79,14 +80,14 @@ class BlumMicaliController extends BaseController
      */
     private function arrayToNumber($array, $p)
     {
-        $result = gmp_init(0);
-        $tmp = 0;
+        $result = '';
         for ($i = 0; $i < count($array); $i++) {
+            $bit = '0';
             if (gmp_cmp($array[$i], gmp_div(gmp_sub($p, 1), 2)) == -1) {
-                $tmp = 1;
+                $bit = '1';
             }
-            $result = gmp_add($result, gmp_mul(gmp_pow(2, $i), $tmp));
+            $result = $bit . $result;
         }
-        return $result;
+        return gmp_init($result, 2);
     }
 }

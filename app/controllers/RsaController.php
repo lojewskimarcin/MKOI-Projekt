@@ -23,8 +23,10 @@ class RsaController extends BaseController
         }
         $tmp = array();
         $results = array();
-        for ($i = 1; $i <= gmp_strval(gmp_mul($count, $mn)); $i++) {
-            $seed = $this->nextNumber($seed, $cn, gmp_mul($fn, $sn));
+        $N = gmp_mul($fn, $sn);
+        $loop = gmp_strval(gmp_mul($count, $mn));
+        for ($i = 1; $i <= $loop; $i++) {
+            $seed = $this->nextNumber($seed, $cn, $N);
             $tmp[] = $seed;
             if ($i % $mn === 0) {
                 $results[] = $this->arrayToNumber($tmp);
@@ -82,10 +84,11 @@ class RsaController extends BaseController
      */
     private function arrayToNumber($array)
     {
-        $result = gmp_init(0);
+        $result = '';
         for ($i = 0; $i < count($array); $i++) {
-            $result = gmp_add($result, gmp_mul(gmp_pow(2, $i), gmp_mod($array[$i], 2)));
+            $bit = gmp_mod($array[$i], 2);
+            $result = gmp_strval($bit) . $result;
         }
-        return $result;
+        return gmp_init($result, 2);
     }
 }

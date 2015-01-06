@@ -27,11 +27,11 @@ class BlumMicaliController extends BaseController
             $seed = $this->nextNumber($fn, $sn, $seed);
             $tmp[] = $seed;
             if ($i % $mn === 0) {
-                $results[] = $this->arrayToNumber($tmp, $sn);
+                $results[] = gmp_strval($this->arrayToNumber($tmp, $sn));
                 $tmp = array();
             }
         }
-        Session::put('bm', $results);
+        Session::put('bm', array('results' => $results, 'bits' => $mn));
     }
 
     /**

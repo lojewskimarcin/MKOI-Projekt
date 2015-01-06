@@ -35,11 +35,11 @@ class RsaTest extends TestCase
         $this->client->submit($form);
         $this->assertSessionHas('rsa');
 
-        $results = Session::get('rsa');
+        $results = ResultsController::getRsaResults();
         $this->assertEquals(count($results), count($exceptedResults));
 
         for ($i = 0; $i < count($results); $i++) {
-            $this->assertEquals(gmp_strval($results[$i]), $exceptedResults[$i]);
+            $this->assertEquals($results[$i], $exceptedResults[$i]);
         }
         $this->client->restart();
     }

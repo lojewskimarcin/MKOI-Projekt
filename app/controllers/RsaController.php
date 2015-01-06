@@ -29,11 +29,11 @@ class RsaController extends BaseController
             $seed = $this->nextNumber($seed, $cn, $N);
             $tmp[] = $seed;
             if ($i % $mn === 0) {
-                $results[] = $this->arrayToNumber($tmp);
+                $results[] = gmp_strval($this->arrayToNumber($tmp));
                 $tmp = array();
             }
         }
-        Session::put('rsa', $results);
+        Session::put('rsa', array('results' => $results, 'bits' => $mn));
     }
 
     /**

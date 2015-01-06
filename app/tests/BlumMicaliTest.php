@@ -34,11 +34,11 @@ class BlumMicaliTest extends TestCase
         $this->client->submit($form);
         $this->assertSessionHas('bm');
 
-        $results = Session::get('bm');
+        $results = ResultsController::getBlumMicaliResults();
         $this->assertEquals(count($results), count($exceptedResults));
 
         for ($i = 0; $i < count($results); $i++) {
-            $this->assertEquals(gmp_strval($results[$i]), $exceptedResults[$i]);
+            $this->assertEquals($results[$i], $exceptedResults[$i]);
         }
         $this->client->restart();
     }

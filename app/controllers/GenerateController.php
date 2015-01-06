@@ -24,10 +24,10 @@ class GenerateController extends BaseController
      */
     public function showStartPage()
     {
-        if (Session::has('rsa') || Session::has('bm')) {
-            return Redirect::to('results');
+        if (ResultsController::areAvailable()) {
+            return Redirect::to('/results');
         }
-        return Redirect::to('generate');
+        return Redirect::to('/generate');
     }
 
     /**
@@ -80,6 +80,6 @@ class GenerateController extends BaseController
         if (!$isSet) {
             App::abort(500);
         }
-        return Redirect::to('results');
+        return Redirect::to('/results');
     }
 }

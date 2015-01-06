@@ -1,0 +1,6 @@
+<?php
+
+return array(
+    "all"   => "Wybierz generator",
+    "range" => "Wygenerowano liczby z przedziału [0, :max]",
+);

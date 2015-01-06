@@ -20,8 +20,17 @@ class RouteTest extends TestCase
      */
     public function testGenerate()
     {
-        $this->call('GET', 'generate');
+        $this->call('GET', '/generate');
         $this->assertResponseOk();
+    }
+
+    /**
+     * Results site route
+     */
+    public function testResults()
+    {
+        $this->call('GET', '/results');
+        $this->assertRedirectedTo('/start');
     }
 
     /**
@@ -29,7 +38,7 @@ class RouteTest extends TestCase
      */
     public function testStart()
     {
-        $this->call('GET', 'start');
-        $this->assertRedirectedTo('generate');
+        $this->call('GET', '/start');
+        $this->assertRedirectedTo('/generate');
     }
 }

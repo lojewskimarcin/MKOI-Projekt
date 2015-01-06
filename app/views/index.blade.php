@@ -3,6 +3,7 @@
 <head>
     <title>@lang('index.title')</title>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=9"/>
     <link rel="shortcut icon" href="/favicon.ico">
     {{ HTML::style('bootstrap/3.3.1/css/bootstrap.min.css') }}
     {{ HTML::style('bootstrap/3.3.1/css/bootstrap-theme.min.css') }}

@@ -1,6 +1,9 @@
 <div class="jumbotron">
-  <h2>@lang('home.title')</h2>
-  <p>@lang('home.authors')</p>
-  <p>@lang('home.description')</p>
-  <p><a class="btn btn-primary btn-lg" href="start" role="button">@lang('home.button')</a></p>
+    <h2>@lang('home.title')</h2>
+
+    <p>@lang('home.authors')</p>
+
+    <p>@lang('home.description')</p>
+
+    <p><a class="btn btn-primary btn-lg" href="start" role="button">@lang('home.button')</a></p>
 </div>

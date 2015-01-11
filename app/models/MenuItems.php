@@ -8,5 +8,6 @@ class MenuItems
     const __default = 0
         , GENERATE  = 1
         , RESULTS   = 2
+        , TESTS     = 3
     ;
 }

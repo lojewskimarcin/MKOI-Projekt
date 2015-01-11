@@ -49,6 +49,11 @@ Route::get('/results/blummicali', 'ResultsController@showBlumMicaliPage');
 Route::get('/results/rsa', 'ResultsController@showRsaPage');
 
 /**
+ * Route for the tests page.
+ */
+Route::get('/tests', 'TestsController@showPage');
+
+/**
  * Route for AJAX request.
  */
 Route::get('/api/isPrime/{number}', 'GenerateController@isPrime')

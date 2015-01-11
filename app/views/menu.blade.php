@@ -24,7 +24,7 @@
                                 <li><a href="/results/blummicali">@lang('menu.blum-micali')</a></li>
                                 <li><a href="/results/rsa">@lang('menu.rsa')</a></li>
                                 <li class="divider"></li>
-                                <li><a href="/results">@lang('menu.all_results')</a></li>
+                                <li><a href="/results">@lang('menu.all')</a></li>
                             </ul>
                         </li>
                     @elseif(ResultsController::isBlumMicali())
@@ -36,6 +36,18 @@
                             <a href="/results/rsa">@lang('menu.results')</a>
                         </li>
                     @endif
+                    <li class="dropdown{{ $menuItem === MenuItems::TESTS ? ' active' : '' }}">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-expanded="false">@lang('menu.tests')<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/tests/chisquare">@lang('menu.chi-square')</a></li>
+                            <li><a href="/tests/mc">@lang('menu.MC')</a></li>
+                            <li><a href="/tests/runstest">@lang('menu.runs_test')</a></li>
+                            <li><a href="/tests/statistics">@lang('menu.statistics')</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/tests">@lang('menu.all')</a></li>
+                        </ul>
+                    </li>
                 @endif
             </ul>
             <p class="navbar-text navbar-right text-uppercase visible-md-inline visible-lg-inline">@lang('menu.right_info')</p>

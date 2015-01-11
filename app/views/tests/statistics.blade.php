@@ -1,0 +1,55 @@
+@extends('index')
+
+@section('content')
+    <ol class="breadcrumb">
+        <li><a href="/">@lang('index.title')</a></li>
+        <li><a href="/tests">@lang('menu.tests')</a></li>
+        <li class="active">@lang('menu.statistics')</li>
+    </ol>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">@lang('tests.results')</div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                <tr>
+                    <th class="text-center">@lang('tests.generator')</th>
+                    <th class="text-center">@lang('tests.test')</th>
+                    <th class="text-center">@lang('tests.expected')</th>
+                    <th class="text-center">@lang('tests.result')</th>
+                    <th class="text-center">@lang('tests.relative')</th>
+                    <th class="text-center">@lang('tests.absolute')</th>
+                </tr>
+                @if(ResultsController::isBlumMicali())
+                    @foreach(StatisticsController::$STATISTICS_TESTS as $test)
+                        <tr>
+                            <td>@lang('menu.blum-micali')</td>
+                            <td>@lang("tests.$test")</td>
+                            <?php
+                            $results = StatisticsController::getStatisticsResults('bm', $test);
+                            echo '<td class="text-center">' . $results['ideal'] . '</td>';
+                            echo '<td class="text-center">' . $results['calculated'] . '</td>';
+                            echo '<td class="text-center">' . $results['relative'] . '</td>';
+                            echo '<td class="text-center">' . $results['absolute'] . '</td>';
+                            ?>
+                        </tr>
+                    @endforeach
+                @endif
+                @if(ResultsController::isRsa())
+                    @foreach(StatisticsController::$STATISTICS_TESTS as $test)
+                        <tr>
+                            <td>@lang('menu.rsa')</td>
+                            <td>@lang("tests.$test")</td>
+                            <?php
+                            $results = StatisticsController::getStatisticsResults('rsa', $test);
+                            echo '<td class="text-center">' . $results['ideal'] . '</td>';
+                            echo '<td class="text-center">' . $results['calculated'] . '</td>';
+                            echo '<td class="text-center">' . $results['relative'] . '</td>';
+                            echo '<td class="text-center">' . $results['absolute'] . '</td>';
+                            ?>
+                        </tr>
+                    @endforeach
+                @endif
+            </table>
+        </div>
+    </div>
+@stop

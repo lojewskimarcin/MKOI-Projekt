@@ -54,6 +54,11 @@ Route::get('/results/rsa', 'ResultsController@showRsaPage');
 Route::get('/tests', 'TestsController@showPage');
 
 /**
+ * Route for the statistics tests page.
+ */
+Route::get('/tests/statistics', 'TestsController@showStatisticsPage');
+
+/**
  * Route for AJAX request.
  */
 Route::get('/api/isPrime/{number}', 'GenerateController@isPrime')

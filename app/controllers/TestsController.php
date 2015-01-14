@@ -21,7 +21,7 @@ class TestsController extends BaseController
     }
 
     /**
-     * Returns view for the tests page.
+     * Returns view for the statistics tests page.
      *
      * @return mixed view for the tests page.
      */
@@ -32,6 +32,21 @@ class TestsController extends BaseController
         } else {
             $menuItem = MenuItems::TESTS;
             return View::make('tests/statistics', array('menuItem' => $menuItem));
+        }
+    }
+
+    /**
+     * Returns view for the MC tests page.
+     *
+     * @return mixed view for the tests page.
+     */
+    public function showMcPage()
+    {
+        if (!ResultsController::areAvailable()) {
+            return Redirect::to('/start');
+        } else {
+            $menuItem = MenuItems::TESTS;
+            return View::make('tests/mc', array('menuItem' => $menuItem));
         }
     }
 }

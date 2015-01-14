@@ -3,7 +3,7 @@
 /**
  * Controller for statistics tests
  */
-class StatisticsController
+class StatisticsController extends BaseController
 {
     public static $STATISTICS_TESTS = array('mean', 'variation', 'standard_deviation', 'average_deviation');
 

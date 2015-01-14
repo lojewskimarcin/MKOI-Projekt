@@ -54,6 +54,11 @@ Route::get('/results/rsa', 'ResultsController@showRsaPage');
 Route::get('/tests', 'TestsController@showPage');
 
 /**
+ * Route for the MC tests page.
+ */
+Route::get('/tests/mc', 'TestsController@showMcPage');
+
+/**
  * Route for the statistics tests page.
  */
 Route::get('/tests/statistics', 'TestsController@showStatisticsPage');

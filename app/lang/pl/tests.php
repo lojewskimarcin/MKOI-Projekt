@@ -7,6 +7,7 @@ return array(
     "expected"           => "Idealna wartość",
     "generator"          => "Generator",
     "mean"               => "Wartość średnia",
+    "pi_value"           => "Liczba &Pi; wynosi: :pi",
     "relative"           => "Błąd względny",
     "result"             => "Wyliczona wartość",
     "results"            => "Wyniki",

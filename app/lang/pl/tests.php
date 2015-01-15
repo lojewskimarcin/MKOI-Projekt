@@ -4,6 +4,7 @@ return array(
     "absolute"           => "Błąd bezwzględny",
     "all"                => "Wybierz test",
     "average_deviation"  => "Odchylenie przeciętne",
+    "downs"              => "Downs",
     "expected"           => "Idealna wartość",
     "generator"          => "Generator",
     "mean"               => "Wartość średnia",
@@ -13,5 +14,6 @@ return array(
     "results"            => "Wyniki",
     "standard_deviation" => "Odchylenie standardowe",
     "test"               => "Test",
+    "ups"                => "Ups",
     "variation"          => "Wariancja",
 );

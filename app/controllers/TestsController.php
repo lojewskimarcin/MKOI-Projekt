@@ -49,4 +49,19 @@ class TestsController extends BaseController
             return View::make('tests/mc', array('menuItem' => $menuItem));
         }
     }
+
+    /**
+     * Returns view for the runs test page.
+     *
+     * @return mixed view for the runs test page.
+     */
+    public function showRunsTestPage()
+    {
+        if (!ResultsController::areAvailable()) {
+            return Redirect::to('/start');
+        } else {
+            $menuItem = MenuItems::TESTS;
+            return View::make('tests/runstest', array('menuItem' => $menuItem));
+        }
+    }
 }

@@ -64,6 +64,11 @@ Route::get('/tests/mc', 'TestsController@showMcPage');
 Route::get('/tests/statistics', 'TestsController@showStatisticsPage');
 
 /**
+ * Route for the runs test page.
+ */
+Route::get('/tests/runstest', 'TestsController@showRunsTestPage');
+
+/**
  * Route for AJAX request.
  */
 Route::get('/api/isPrime/{number}', 'GenerateController@isPrime')

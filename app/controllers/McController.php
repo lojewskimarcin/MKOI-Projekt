@@ -54,7 +54,7 @@ class McController extends BaseController
      * @param $results array of results
      * @param $max string maximum number to generate
      *
-     * @return float calculated Pi number
+     * @return array calculated Pi number
      */
     private static function calculatePi($results, $max)
     {

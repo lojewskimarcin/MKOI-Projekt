@@ -12,7 +12,7 @@
             <ul>
                 <li><a href="/tests/chisquare">@lang('menu.chi-square')</a></li>
                 <li><a href="/tests/mc">@lang('menu.MC')</a></li>
-                <li><a href="/tests/runs_test">@lang('menu.runs_test')</a></li>
+                <li><a href="/tests/runstest">@lang('menu.runs_test')</a></li>
                 <li><a href="/tests/statistics">@lang('menu.statistics')</a></li>
             </ul>
         </div>

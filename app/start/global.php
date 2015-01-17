@@ -79,3 +79,11 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+
+/**
+ * Redirect all not found requests to start page
+ */
+App::missing(function()
+{
+	return Redirect::to('/');
+});

@@ -54,6 +54,11 @@ Route::get('/results/rsa', 'ResultsController@showRsaPage');
 Route::get('/tests', 'TestsController@showPage');
 
 /**
+ * Route for the Chi Square test page.
+ */
+Route::get('/tests/chisquare', 'TestsController@showChiSquarePage');
+
+/**
  * Route for the MC tests page.
  */
 Route::get('/tests/mc', 'TestsController@showMcPage');

@@ -64,4 +64,19 @@ class TestsController extends BaseController
             return View::make('tests/runstest', array('menuItem' => $menuItem));
         }
     }
+
+    /**
+     * Returns view for the Chi Square test page.
+     *
+     * @return mixed view for the Chi Square test page.
+     */
+    public function showChiSquarePage()
+    {
+        if (!ResultsController::areAvailable()) {
+            return Redirect::to('/start');
+        } else {
+            $menuItem = MenuItems::TESTS;
+            return View::make('tests/chisquare', array('menuItem' => $menuItem));
+        }
+    }
 }

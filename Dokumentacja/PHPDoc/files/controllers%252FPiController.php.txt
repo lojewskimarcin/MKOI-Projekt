@@ -1,0 +1,9 @@
+<?php
+
+/**
+ * Controller for Pi Test
+ */
+class PiController extends BaseController {
+
+}
+

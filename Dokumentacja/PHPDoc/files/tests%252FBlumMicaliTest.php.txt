@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * Tests RSA generator
+ */
+class BlumMicaliTest extends TestCase
+{
+    /**
+     * Test for Blum-Micali generator
+     */
+    public function testBlumMicaliGenerator()
+    {
+        $this->blumMicaliGeneratorTest(array(
+            'blum-micali_cb' => 'blum-micali',
+            'first_num_bm' => '13',
+            'second_num_bm' => '5',
+            'seed_bm' => '3',
+            'max_number_bm' => '5',
+            'count_bm' => '7',
+        ), array('4', '2', '17', '8', '4', '2', '17'));
+    }
+
+    /**
+     * Tests Blum-Micali generator
+     *
+     * @param $parameters array form parameters
+     * @param $exceptedResults array excepted results
+     */
+    private function blumMicaliGeneratorTest($parameters, $exceptedResults)
+    {
+        $crawler = $this->client->request('GET', 'generate');
+        $form = $crawler->selectButton('submit_btn')->form();
+        $form->setValues($parameters);
+        $this->client->submit($form);
+        $this->assertSessionHas('bm');
+
+        $results = ResultsController::getBlumMicaliResults();
+        $this->assertEquals(count($results), count($exceptedResults));
+
+        for ($i = 0; $i < count($results); $i++) {
+            $this->assertEquals($results[$i], $exceptedResults[$i]);
+        }
+        $this->client->restart();
+    }
+}
+
